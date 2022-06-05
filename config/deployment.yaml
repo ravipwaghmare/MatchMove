@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: matchmove
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: matchmove
+  template:
+    metadata:
+      labels:
+        app: matchmove
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: matchmove
+          image: ravi2908/matchmove:latest
+          command: ["/matchmove"]
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+
+
